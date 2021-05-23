@@ -5,20 +5,51 @@
 }
 body{
     font-family: ar-font;
+    overflow-x: hidden;
 }
-.container {
-    margin-right: 0;
-    margin-left: 0;
+
+nav.navbar {
+    transition: all 1s ease;
+    border-bottom: 1px solid transparent;
+    z-index: 20;
+    text-align: right;
+}
+nav.navbar button.navbar-toggler {
+    margin: 30px auto;
+    transition: all 1s ease;
+}
+nav.navbar button.navbar-toggler span {
+   color: #fff; 
+}
+nav.navbar.noTransparrent {
+  background-color: #fff;
+  border-bottom: 1px solid #eee; 
+}
+nav.navbar .navbar-brand img {
+  width: 80%;
+  transition: all 1s ease;
+}
+nav.navbar.noTransparrent button.navbar-toggler {
+    margin: 30px auto;
+}
+nav.navbar.noTransparrent button.navbar-toggler span {
+  color: #16aeca; 
+}
+nav.navbar.noTransparrent .navbar-brand img {
+  width: 80%; 
+}
+/* تغيير لون العناصر في القائمة بعد النزول إلى الأسفل */
+nav.navbar.noTransparrent ul.navbar-nav li a.nav-link {
+  color: #16aeca; 
 }
 nav.navbar ul.navbar-nav {
   padding-right: 0;
-  margin-bottom: 0;
 }
 nav.navbar ul.navbar-nav li a.nav-link {
   color: #eee;
   font-size: 16px;
   line-height: 40px;
-  padding: 0 1.5rem;
+  padding: 0 1.3rem;
   transition: all 0.5s ease; 
 }
 nav.navbar ul.navbar-nav li a.nav-link:hover, 
@@ -26,29 +57,14 @@ nav.navbar ul.navbar-nav li a.nav-link.active {
   color: #16aeca;
   background-color: #fff; 
 }
-.navbar{ 
-  z-index: 20 ;
-}
-nav.navbar .navbar-brand img {
-  width: 100%;
-}
-/* تغيير لون العناصر في القائمة بعد النزول إلى الأسفل */
-nav.navbar.noTransparrent ul.navbar-nav li a.nav-link {
-  color: #16aeca; 
-}
+
 /* تغيير لون القوائم عند المرور فوقها بمؤشر الفأرة */
 nav.navbar.noTransparrent ul.navbar-nav li a.nav-link:hover, 
 nav.navbar.noTransparrent ul.navbar-nav li a.nav-link.active {
   color: #dae413;
   background-color: #16aeca; 
 }
-nav.navbar.noTransparrent {
-  background-color: #fff;
-  border-bottom: 1px solid #eee; 
-}
-nav.navbar.noTransparrent .navbar-brand img {
-  width: 80%; 
-}
+
 
 header{
     background-image: url(../images/bg.jpg);
@@ -61,18 +77,8 @@ header .overlay {
     background: linear-gradient(to right, 
     rgba(41, 153, 155, 0.8) 0 ,
     rgba(167, 173, 44, 0.8) 100%);
-    height: 640px;
 }
-nav.navbar button.navbar-toggler {
-    margin: 30px auto;
-    transition: all 1s ease;
-}
-nav.navbar button.navbar-toggler span {
-   color: #fff; 
-}
-nav.navbar.noTransparrent button.navbar-toggler span {
-  color: #16aeca; 
-}
+
 
 /* هنا بداية تكوين عارض الشرائح  */
     
@@ -82,32 +88,38 @@ header .overlay .slider .carousel-inner .carousel-item {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
-/* التنسيقات المطبقة على العنوان */
-header .overlay .slider .carousel-inner .carousel-item .carousel-caption h3 {
-  font-size: 40px;
-  line-height: 60px;
-   transform: translateY(-30px);
-  transition: all 1s ease;
-}
-header .overlay .slider .carousel-inner .carousel-item.active .carousel-caption h3{
-     transform: translateY(0);
-}
 /* تحريك العنوان إلى الأعلى */
 header .overlay .slider .carousel-inner .carousel-item .carousel-caption {
   bottom: 30%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
+/* التنسيقات المطبقة على العنوان */
+
+header .overlay .slider .carousel-inner .carousel-item .carousel-caption h3 {
+  font-size: 40px;
+  line-height: 60px;
+   transform: translateY(-50px);
+  transition: all 1s ease;
+}
+header .overlay .slider .carousel-inner .carousel-item.active .carousel-caption h3,
+header .overlay .slider .carousel-inner .carousel-item.active .carousel-caption a {
+     transform: translateY(0);
+}
+
 
 /* التنسيقات المطبقة على الرابط التشعبي أسفل العنوان */
 header .overlay .slider .carousel-inner .carousel-item .carousel-caption a {
   font-size: 18px;
   line-height: 50px;
-    
+  background-color: #16aeca;
   color: #fff;
   border-radius: 30px;
   padding: 0px 2rem;
   margin-top: 30px;
   display: inline-block;
-  transition: all .5s ease; 
+  transition: all .5s ease;
+  transform: translateY(50px);
 }
 /* التنسيقات المطبقة عند مرور مؤشر الفأرة فوق الزر */
 header .overlay .slider .carousel-inner .carousel-item .carousel-caption a:hover {
@@ -121,11 +133,17 @@ header .overlay .slider .carousel-control-next i{
     border-radius: 2px;
     padding: 30px 20px;
 }
-header .overlay .slider .carousel-control-prev{
+header .overlay .slider .carousel-control-prev,
+header .overlay .slider .carousel-control-next {
+    top: auto;
+    bottom: 45%;
+    width: auto;
+}
+header .overlay .slider .carousel-control-prev {
     left: 20px;
 }
-header .overlay .slider .carousel-control-next{
-    right: 20px;
+header .overlay .slider .carousel-control-next {
+    right: 20px; 
 }
 /* active إزالة الشفافية عن الشريحة الفعالة */
 header .overlay .slider .carousel-inner .carousel-item.active {
@@ -511,27 +529,35 @@ footer .copyright p {
   color: #919191;
   margin-bottom: 0;
 }
-/* التنسيقات المطبقة على الشاشات التي عرضها أصغر من 767 بكسل */
-@media (max-width: 900px) {
+
+@media (max-width: 991px) {
   .navbar {   
   	padding: .5rem 0rem;
   }
   nav.navbar .container {
   	width: 100%;
+    max-width: 100%;
   }
   nav.navbar .navbar-brand img {
   	width: 80%;
   }
-  nav.navbar .navbar-collapse {
-  	background-color: #16aeca;
-  }
+  
   nav.navbar.noTransparrent .navbar-collapse {
   	background-color: #fff;
   }
   .navbar-nav .nav-item{
-      margin-right: 0 !important;
-      margin-left: 0 !important;
+      margin: auto 0 !important;
   }
+    nav.navbar ul.navbar-nav li a.nav-link {
+    padding: 0 .5rem;
+    font-size: 16px;
+  }
+    header .overlay .slider .carousel-inner .carousel-item .carousel-caption h3 {
+    font-size: 30px;
+  }
+  header .overlay .slider .carousel-inner .carousel-item .carousel-caption {
+    bottom: 25%;
+  } 
   section.gallery .work-gallery .overlay-gallery .gallery-text h3 {
   	font-size: 18px;
   	line-height: 36px;
@@ -554,9 +580,45 @@ footer .copyright p {
   	width: 100%;
   }
 }
+
+/* تنسيق قائمة التنقل فى مقاس الجوال */
+@media (max-width: 767px) {
+
+  .navbar {    
+		padding: .5rem 0rem;
+    }
+ 
+  nav.navbar .container {
+      width: 100%;
+      max-width: 100%;
+      flex-direction: row-reverse;
+  }
+  nav.navbar .navbar-collapse {
+		background-color: #16aeca; 
+    } 
+    nav.navbar.noTransparrent .navbar-collapse {
+		background-color: #fff; 
+    }
+   nav.navbar .navbar-brand img {
+      width: 80%; 
+  }
+  .navbar .navbar-toggler{
+      outline: none;
+      margin: 20px !important;
+  }
+  .navbar .navbar-toggler span{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+    
+}
+
 /* التنسيقات المطبقة على الشاشات التي عرضها أصغر من 575 بكسل */
 
 @media (max-width: 575px) {
+
   header .overlay .slider .carousel-inner .carousel-item .carousel-caption {
     left: 2%;
     right: 2%;
@@ -578,46 +640,12 @@ footer .copyright p {
   section.gallery .work-gallery .overlay-gallery img {   
     width: 50%;
   }
-  nav.navbar .container{
-      flex-direction: row-reverse;
-  }
-   .navbar .navbar-toggler{
-      margin: 0 !important;
-  }
+
   section.gallery .work-gallery .overlay-gallery:target img{
       width: 50%;
   }
+
 }
 
 
-/* تنسيق قائمة التنقل فى مقاس الجوال */
-@media (max-width: 767) {
-  nav.navbar .container {
-      width: 100%;
-      flex-direction: row-reverse;
-  }
-   nav.navbar .navbar-brand img {
-      width: 80%; 
-  }
-  .navbar .navbar-toggler{
-      margin: 0 !important;
-  }
-  .navbar .navbar-toggler span{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
-}
-@media (max-width: 991px) {
-  nav.navbar ul.navbar-nav li a.nav-link {
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
-    font-size: 14px;
-  }
-  header .overlay .slider .carousel-inner .carousel-item .carousel-caption h3 {
-    font-size: 30px;
-  }
-  header .overlay .slider .carousel-inner .carousel-item .carousel-caption {
-    bottom: 25%;
-  } 
-}
+
