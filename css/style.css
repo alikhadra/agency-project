@@ -491,11 +491,20 @@ footer .top-footer ul.social li a i {
 footer .top-footer ul.social li {
     margin-right: 5px;
 }
-footer .top-footer ul.social li a:hover i{
+footer .top-footer ul.social li .linkedin:hover i{
     background-color: #16aeca;
 }
-footer .top-footer ul.social li a.facebook:hover i {
+footer .top-footer ul.social li .facebook:hover i {
    background-color: #3b5999; 
+}
+footer .top-footer ul.social li .pinterest:hover i {
+  background-color: #E11A21;
+}
+footer .top-footer ul.social li .google-plus:hover i {
+  background-color: #FF0000;
+}
+footer .top-footer ul.social li .twitter:hover i {
+  background-color: #5DA9DD;
 }
 /* التنسيقات الخاصة بعناصر القائمة */
 footer .top-footer ul.contact-us li {
